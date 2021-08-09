@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Students</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1 style="margin-top : 30px;">Current Student Details</h1>
+        </div>
+        <div id="studentTable" class="row align-items-start" style="margin-top: 100px;">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+
+        $.getJSON('students.json', function (data) {
+            var student_data = '';
+            $.each(data, function (key, value) {
+                student_data += '<div class="col" style="border-right: dashed;"><div class="row align-items-start"><div class="col">Student Name:</div>';
+                student_data += '<div class="col">' + value[0].Name + '</div></div>';
+                student_data += '<div class="row align-items-start" style = "margin-top: 10px;" ><div class="col">Student Surname:</div>';
+                student_data += '<div class="col">' + value[0].Surname + '</div> </div><div class="row align-items-start" style="margin-top: 10px;"><div class="col">Student Department:</div>';
+                student_data += '<div class="col">' + value[0].Department + '</div></div><div class="row align-items-start" style="margin-top: 10px;"><div class="col">Student ID:</div>';
+                student_data += '<div class="col">' + value[0].StudentNumber + '</div></div>';
+                student_data += '<div class="row align-items-start" ><a style="margin-top: 20px;" href="firstStudent.html" class="link - primary">Transcript</a></div></div>';
+                student_data += '<div class="col" style="border-right: dashed;">';
+                student_data += '<div class="row align-items-start">';
+                student_data += '<div class="col">Student Name:</div>';
+                student_data += '<div class="col">' + value[1].Name + '</div></div>';
+                student_data += '<div class="row align-items-start" style = "margin-top: 10px;" ><div class="col">Student Surname:</div>';
+                student_data += '<div class="col">' + value[1].Surname + '</div> </div><div class="row align-items-start" style="margin-top: 10px;"><div class="col">Student Department:</div>';
+                student_data += '<div class="col">' + value[1].Department + '</div></div><div class="row align-items-start" style="margin-top: 10px;"><div class="col">Student ID:</div>';
+                student_data += '<div class="col">' + value[1].StudentNumber + '</div></div>';
+                student_data += '<div class="row align-items-start" ><a style="margin-top: 20px;" class="link-primary" href="secondStudent.html">Transcript</a></div></div>';
+                student_data += '<div class="col">';
+                student_data += '<div class="row align-items-start">';
+                student_data += '<div class="col">Student Name:</div>';
+                student_data += '<div class="col">' + value[2].Name + '</div></div>';
+                student_data += '<div class="row align-items-start" style = "margin-top: 10px;" ><div class="col">Student Surname:</div>';
+                student_data += '<div class="col">' + value[2].Surname + '</div> </div><div class="row align-items-start" style="margin-top: 10px;"><div class="col">Student Department:</div>';
+                student_data += '<div class="col">' + value[2].Department + '</div></div><div class="row align-items-start" style="margin-top: 10px;"><div class="col">Student ID:</div>';
+                student_data += '<div class="col">' + value[2].StudentNumber + '</div></div>';
+                student_data += '<div class="row align-items-start" ><a style="margin-top: 20px;" class="link-primary" href="thirdStudent.html">Transcript</a></div></div>';
+            });
+
+            $('#studentTable').append(student_data);
+
+        });
+
+    });
+
+</script>
